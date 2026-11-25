@@ -21,6 +21,35 @@
 * 内置强大代码生成器，一键生成前后端代码（java、vue、xml、sql），支持 CRUD 下载。
 * 阿里云折扣场：[点我进入](http://aly.ruoyi.vip)，腾讯云秒杀场：[点我进入](http://txy.ruoyi.vip)&nbsp;&nbsp;
 
+## 本仓说明
+
+本仓基于 RuoYi-Vue 的 `springboot2` 分支建立，保留完整上游提交历史，上游地址为 https://gitee.com/y_project/RuoYi-Vue.git 。基线提交为 `0677d6e4b9e6deb0668380878f4fe7fe07e3f471`。本仓 `origin` 为 HIA-RuoYi-springboot2，`upstream` 指向上游；后续通过 `git fetch upstream` 吸收上游修复。
+
+本仓相对所选基线**没有本地差异**，上游原有代码、注释与许可证均保持原样。
+
+## 环境与启动
+
+环境：JDK 1.8、Maven、MySQL 5.7、Redis 3.x。端口 `8080`，数据源 `druid`。
+
+数据库初始化脚本为 `sql/ry_20261117.sql` 与 `sql/quartz.sql`。驱动与连接配置见 `ruoyi-admin/src/main/resources/application-druid.yml`；连接凭据使用受控配置，不写入公开文档。
+
+```powershell
+mvn -B -DskipTests package
+java -jar ruoyi-admin/target/ruoyi-admin.jar
+```
+
+启动日志出现 `Started RuoYiApplication` 后，后端可通过 `http://localhost:8080/` 访问。
+
+## 上游同步
+
+```powershell
+git fetch upstream
+git log --oneline HEAD..upstream/springboot2
+git merge upstream/springboot2
+```
+
+同步前先确认本地差异范围；本仓当前无本地差异，合并应可保持上游原样。
+
 # 版本分支
 
 RuoYi-Vue 后端项目提供 Spring Boot 2.x / 3.x / 4.x 多版本分支的并行维护
