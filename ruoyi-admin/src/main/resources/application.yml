@@ -37,6 +37,19 @@ logging:
     com.ruoyi: debug
     org.springframework: warn
 
+# 数据库迁移配置（ADR-0007 / W-hry-P8）
+spring:
+  flyway:
+    # 已有库首次接入时以 V1 为基线，不重复执行上游建表；空库则从 V1 起完整迁移
+    baseline-on-migrate: true
+    baseline-version: 1
+    # 迁移文件位置：classpath:db/migration
+    locations: classpath:db/migration
+    # 校验迁移文件未被修改，避免版本漂移
+    validate-on-migrate: true
+    # 迁移表放在 ry-vue 库内，不新建 schema
+    table: flyway_schema_history
+
 # 用户配置
 user:
   password:

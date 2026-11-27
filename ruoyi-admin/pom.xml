@@ -17,6 +17,12 @@
 
     <dependencies>
 
+        <!-- 数据库迁移：Flyway（ADR-0007 初选，W-hry-P8 落地） -->
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
+
         <!-- spring-boot-devtools -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
